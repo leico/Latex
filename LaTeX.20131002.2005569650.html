@@ -676,7 +676,7 @@ http://www2.kumagaku.ac.jp/teacher/herogw/index.html
 [[このメニューの編集|MainMenu]]
 [[TiddlyWiki書式|WikiStyle]]</pre>
 </div>
-<div title="Notation" creator="leico" modifier="YourName" created="201212091226" modified="201310022013" changecount="24">
+<div title="Notation" creator="leico" modifier="leico" created="201212091226" modified="201212241414" changecount="21">
 <pre>!~LaTeXの記法
 ~LaTeXの記法はHTMLと比較される事があります．
 というのも，双方ともコンピュータ上で形式的な文章を書くために考案された記法だからでしょう．
@@ -692,10 +692,7 @@ http://www2.kumagaku.ac.jp/teacher/herogw/index.html
 *[[脚注|NotationFootnote]]
 *[[点付文字|NotationDotword]]
 *[[特殊文字|NotationSpectial]]
-*[[一行空ける|NotationLineSpace]]
-*[[ラベルと参照|NotationReference]]
-*[[図の挿入|NotationImage]]
-*[[表を作る|NotationTable]]</pre>
+*[[一行空ける|NotationLineSpace]]</pre>
 </div>
 <div title="NotationBody" creator="leico" modifier="leico" created="201212091455" changecount="1">
 <pre>!ドキュメント記述する枠組み
@@ -821,70 +818,6 @@ HTMLではbodyタグ，C言語ではmain関数の様なものです．
 ***印刷面の設定
 ****twoside
 *****両面印刷にします．</pre>
-</div>
-<div title="NotationImage" creator="YourName" modifier="YourName" created="201310022005" modified="201310022005" changecount="2">
-<pre>!図の挿入
-
-!!画像の準備
-デフォルトではeps画像しかlatexは扱えないため、eps画像を作成する。
-
-!!画像を挿入する。
-{{{
-\begin{figure}[hbtp]
-	\begin{center}
-		\includegraphics[width=120mm]{./image.eps}
-	\end{center}
-	\caption{キャプション}
-	\label{ラベル}
-\end{figure}
-}}}
-こんな感じ。
-
-{{{
-\begin{figure}[画像の配置]
-\end{figure}
-}}}
-図の一番大きな構造体。
-画像の配置は以下
-* h
-** この位置
-* t
-** ページのトップ
-* b
-** ページのボトム
-* p
-** 新しいページに入れる
-* !
-** h,t,b,pいずれかの前に付けると強い指示になる。
-優先順は左から右、{{{[htb]}}}の場合、ココが無理ならトップ、無理ならボトムとなる。
-
-{{{
-\begin{center}
-\end{center}
-}}}
-センタリング。画像以外でも使える。
-
-{{{
-\includeimage[オプション]{アドレス}
-}}}
-画像をインクルード(挿入)する。読み込む画像のアドレスとオプションには幅などを指定出来る。
-
-{{{
-\caption{キャプション}
-}}}
-画像のキャプション
-
-{{{
-\label{ラベル}
-}}}
-
-''実験結果を図1に示す。''
-といった文章の参照元となるラベル。
-画像なので、先頭に''fig:''などを付けるのが一般的
-
-
-
-</pre>
 </div>
 <div title="NotationIndex" creator="leico" modifier="leico" created="201212091656" modified="201212091704" changecount="7">
 <pre>!目次と見出し
@@ -1044,41 +977,6 @@ documentclass 以外にも，全体に関わる設定があります．
 }}}
 となります．</pre>
 </div>
-<div title="NotationReference" creator="YourName" modifier="YourName" created="201310022010" modified="201310022012" changecount="2">
-<pre>!ラベルと参照
-
-!!参照先のラベルを作る
-
-{{{
-\label{ラベル}
-}}}
-ラベルを付ける。ラベルを付けるとその章立ての数字を文章の別の場所から参照出来るようになる。
-ラベルの部分には好きな文字列が入る。ただ、図、数式、表など分かりやすくするため、ハンガリアン記法的なものが存在する。
-|fig:****|図|
-|tb:****|表|
-|eq:****|数式|
-|sec:****|節、章|
-
-
-!!ラベルを参照する。
-
-{{{
-\ref{ラベル}
-}}}
-でラベルの数字に置き換わる。
-
-{{{
-\section{Test} \label{sec:test}
-
-\ref{sec:test}章では、○○について・・・
-}}}
-
-&gt;''1.Test''
-&gt;
-&gt; 1.章では、○○について・・・
-
-となる。</pre>
-</div>
 <div title="NotationSpectial" creator="leico" modifier="leico" created="201212152146" modified="201212152149" changecount="2">
 <pre>!特殊文字
 
@@ -1101,69 +999,6 @@ documentclass 以外にも，全体に関わる設定があります．
 で中央に点が3つ
 {{{\cdot}}}
 で中央に点が1つ表示されます．</pre>
-</div>
-<div title="NotationTable" creator="YourName" modifier="YourName" created="201310022018" modified="201310022024" changecount="12">
-<pre>!表を作る
-
-!!表の記法
-{{{
-\begin{table}[h]
-	\begin{tabular}{|l|l|l|l|l|}
-		\hline
-		index	&amp;	depth	&amp;	width	&amp;	height	&amp;	selectimage\\
-		\hline
-	\end{tabular}
-\end{table}
-}}}
-
-こんな感じ
-
-{{{
-\begin{table}[htb]
-\end{table}
-}}}
-図と同じく、テーブルの一番大きな構造体
-
-{{{
-\begin{tabular}{lcr}
-\end{tabular}
-}}}
-実際に表を作る。
-2番めの中括弧の中に1列にいくつの要素が入るかと、それぞれどこに揃えるかを決める。
-{{{ {lll} }}}
-
-|あ|い|う|
-|ああああ|いいい|うううう|
-
-{{{ {lcr} }}}
-
-|あ| い | う|
-|ああああ| いいい | うううう|
-
-{{{ {llcr} }}}
-
-|あ|い| う | え|
-|ああああ|いいい| うううう | ええええ|
-
-*l
-**左
-*c
-**中央
-*r
-**右
-それぞれの間に{{{ | }}}を入れるとそこに罫線が引かれる
-
-{{{
-\hline
-}}}
-水平線だが、表の上下に罫線が必要な時、表の上下間に罫線が必要な時に入れる。
-二重に入れると二重線になる。
-
-{{{
-index	&amp;	depth	&amp;	width	&amp;	height	&amp;	selectimage\\
-}}}
-内容。カラム毎に{{{ &amp; }}}で区切り、別の列に動く時は改行を入れる。
-改行を入れないと下部の罫線が描画されない。</pre>
 </div>
 <div title="NotationTitle" creator="leico" modifier="leico" created="201212091551" modified="201212091556" changecount="2">
 <pre>!タイトルと作者の記述
@@ -1331,7 +1166,7 @@ http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/nruby.html
 <div title="SiteTitle" creator="YourName" modifier="YourName" created="201212090955" changecount="1">
 <pre>~LaTeXの導入</pre>
 </div>
-<div title="WikiStyle" creator="leico" modifier="YourName" created="201108040628" modified="201310022017" changecount="3">
+<div title="WikiStyle" creator="leico" modifier="leico" created="201108040628" modified="201108040629" changecount="2">
 <pre>改行してただ打っているだけでも十分メモ帳として機能するわけですが、''強調したい！''とか''表組みにしたい！''とか色々表現したいこともあると思います。
 とはいえ、''わざわざHTMLを書くのは面倒くさい！''というのが正直なところです。
 
