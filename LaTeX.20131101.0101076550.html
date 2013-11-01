@@ -665,13 +665,12 @@ http://www2.kumagaku.ac.jp/teacher/herogw/index.html
 *ESP Ghostscriptの方は中のインストーラを起動し，インストールを行う．
 とりあえずはこれだけで終了．</pre>
 </div>
-<div title="MainMenu" creator="leico" modifier="YourName" created="201108040628" modified="201311010347" changecount="15">
+<div title="MainMenu" creator="leico" modifier="YourName" created="201108040628" modified="201310011630" changecount="14">
 <pre>[[LaTeXのインストール|Intro]]
 [[日本語フォントの設定|Font]]
 [[プラグインの導入|Plugin]]
 [[記法|Notation]]
 [[エラーの解決策|Error]]
-[[テンプレート|Template]]
 ----
 [[GettingStarted]]
 [[このメニューの編集|MainMenu]]
@@ -1200,7 +1199,7 @@ index	&amp;	depth	&amp;	width	&amp;	height	&amp;	selectimage\\
 *タイトル情報を元にタイトルを出力します．
 **タイトル，著者，日付といったタイトルにまつわるコマンドはこのコマンドの前に記述されている必要があります．</pre>
 </div>
-<div title="Plugin" creator="leico" modifier="YourName" created="201212091207" modified="201311010344" changecount="13">
+<div title="Plugin" creator="leico" modifier="leico" created="201212091207" modified="201212170207" changecount="12">
 <pre>!Pluginを導入する
 
 他のソフトウェア同様，~LaTeXはプラグインによって機能を拡張出来る．
@@ -1222,12 +1221,9 @@ index	&amp;	depth	&amp;	width	&amp;	height	&amp;	selectimage\\
 [[ページ設定に関する細かな設定|PluginGeometry]]
 
 !!indent.styを導入する
-[[段落のインデントを好きに変更する|PluginIndent]]
-
-!!回り込みの設定
-[[図や表の場所設定|PluginFloat]]</pre>
+[[段落のインデントを好きに変更する|PluginIndent]]</pre>
 </div>
-<div title="PluginGeometry" creator="leico" modifier="YourName" created="201212170154" modified="201311010055" changecount="8">
+<div title="PluginGeometry" creator="leico" modifier="leico" created="201212170154" modified="201212170206" changecount="7">
 <pre>!ページ設定を簡単に細かに設定する
 
 !!geometry.sty
@@ -1273,33 +1269,6 @@ geometry.dtxとgeometry.insをダウンロードする
 
 !!!マニュアル
 [[マニュアル|./plugin/geometry/manual.pdf]]</pre>
-</div>
-<div title="PluginIndent" creator="YourName" modifier="YourName" created="201311010100" changecount="1">
-<pre>!段落のインデントを好きに変更する
-
-!!indent.sty
-[[配布先|http://www.ctan.org/tex-archive/macros/latex209/contrib/misc]]
-[[簡単な説明|http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/indent.html]]
-
-!!使い方
-ブリアンブルで
-{{{
-\usepackage{indent}
-}}}
-と記述します。
-
-インデントを入れたい箇所を
-{{{
-\begin{indentication}{left}{right}
-\end{indentication}
-}}}
-で囲みます。
-*left
-**左の余白です。
-*right
-**右の余白です。
-余白はpt(ポイント)やzw(文字数)で指定できます。
-</pre>
 </div>
 <div title="PluginPXrubrica" creator="leico" modifier="leico" created="201212101224" modified="201212101233" changecount="5">
 <pre>!~PXrubricaの導入
@@ -1361,91 +1330,6 @@ http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/nruby.html
 </div>
 <div title="SiteTitle" creator="YourName" modifier="YourName" created="201212090955" changecount="1">
 <pre>~LaTeXの導入</pre>
-</div>
-<div title="Template" creator="YourName" modifier="YourName" created="201311010348" modified="201311010350" changecount="2">
-<pre>!テンプレート
-
-{{{
-\documentclass[11pt,a4paper]{ujarticle}
-\usepackage{setspace}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{float}
-
-\makeatletter
-\def\section{\@startsection {section}{1}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3 ex plus .2ex}{\fontsize{11pt}{0pt}\bf}}
-\makeatother
-
-\makeatletter
-\def\subsection{\@startsection {subsection}{2}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3ex plus .2ex}{\fontsize{10pt}{0pt}\bf}}
-\makeatother
-
-\makeatletter
-\def\subsubsection{\@startsection {subsubsection}{3}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3ex plus .2ex}{\fontsize{9pt}{0pt}\bf}}
-\makeatother
-
-\makeatletter
-\def\paragraph{\@startsection {paragraph}{4}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3ex plus .2ex}{\fontsize{8pt}{0pt}\bf}}
-\makeatother
-
-\makeatletter
-\def\subparagraph{\@startsection {subparagraph}{5}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3ex plus .2ex}{\fontsize{8pt}{0pt}\bf}}
-\makeatother
-
-\setlength{\textwidth}{15.92cm}     % 本文の幅
-\setlength{\topmargin}{-1cm}        % ページ開始から本文までの余白
-\setlength{\oddsidemargin}{0mm}
-\setlength{\evensidemargin}{0mm}
-\setlength{\textheight}{23.5cm}     % 本文の高さ
-\setlength{\footskip}{18mm}         % 本文とページ番号までの距離
-
-
-
-
-\begin{document}
-
-%
-% 本文
-%
-\newpage
-\pagenumbering{arabic}
-\setstretch{1.2}
-\footnotesize
-
-\section{本文}
-\subsection{機能}
-
-URLは以下のように記述する：\\
-\url{https://www.google.co.jp/}\\
-
-表は以下のように記述する：
-\begin{table}[H]
-    \footnotesize
-    \begin{tabular}{|l|l|l|l|}
- 	\hline
-        AAA &amp; BBB\\
-	\hline
-        CCC &amp; DDD\\
-        EEE &amp; FFF\\
-       	GGG &amp; HHH\\
-        \hline
-    \end{tabular}
-\end{table}
-
-画像は以下のように記述する：
-\begin{flushleft}
-    \includegraphics[width=60mm]{./test.eps}
-\end{flushleft}
-
-\subsubsection{注意事項}
-aaaa
-
-
-
-
-\end{document}
-
-}}}</pre>
 </div>
 <div title="WikiStyle" creator="leico" modifier="YourName" created="201108040628" modified="201310022017" changecount="3">
 <pre>改行してただ打っているだけでも十分メモ帳として機能するわけですが、''強調したい！''とか''表組みにしたい！''とか色々表現したいこともあると思います。
